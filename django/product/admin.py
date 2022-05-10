@@ -8,7 +8,8 @@ class ProductPhotoInline(admin.TabularInline):
 
 class ProductAdmin(admin.ModelAdmin):
     inlines = [ProductPhotoInline,]
-    #list_diplay = ('p_id')
+    list_display = ('p_id', 'p_name', 'p_brand',) 
+
     #list_editable = ('p_brand','p_name')
 
 admin.site.register(Product, ProductAdmin)

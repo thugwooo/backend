@@ -19,6 +19,11 @@ def item_list(request):
     elif request.method == 'POST':
         print(request.POST)
         return Response('asdf')
+@api_view(['GET'])
+def item_detail(request, p_id):
+    if request.method == 'GET':
+        queryset = Product.objects.get(p_id = p_id)
+        return Response()
 @api_view(['POST'])
 def quration(request):
     print(request.POST)
