@@ -8,7 +8,7 @@ class ProductPhotoInline(admin.TabularInline):
 
 class ProductAdmin(admin.ModelAdmin):
     inlines = [ProductPhotoInline,]
-    list_display = ('p_id', 'p_name', 'p_brand',) 
+    list_display = ('p_id', 'p_name', ) 
 
     #list_editable = ('p_brand','p_name')
 

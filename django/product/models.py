@@ -8,7 +8,6 @@ class Product(models.Model):
     p_id = models.AutoField(primary_key=True)
     p_pet = models.CharField(max_length=20, default='강아지')
     p_name = models.CharField(max_length=100)
-    p_brand = models.CharField(max_length=100)
     p_large_category = models.CharField(max_length=100, blank=True)
     p_medium_category = models.CharField(max_length=100, blank=True)
     p_small_category1 = ArrayField(models.CharField(max_length=20), blank =True)
@@ -28,4 +27,4 @@ class Product(models.Model):
 
 class ProductPhoto(models.Model):
     p_id = models.ForeignKey(Product, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to = 'images/', blank =True)
+    image = models.ImageField(upload_to = 'images/product/', blank =True)

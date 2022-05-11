@@ -23,10 +23,9 @@ with open(CSV_PATH_PRODUCTS,'r') as in_file:
         Product.objects.create(
             p_pet = row['p_pet'],
             p_name = row['p_name'],
-            p_brand = row['p_brand'],
-            p_large_category = row['p_large_category'],
+            p_large_category = row['p_large_category'],      
             p_medium_category = row['p_medium_category'],
-            p_small_category1 = str_to_list(row['p_small_category1']),
+            p_small_category1 = str_to_list(row['p_small_category1']),  #브랜드
             p_small_category2 = str_to_list(row['p_small_category2']),
             p_small_category3 = str_to_list(row['p_small_category3']),
             p_small_category4 = str_to_list(row['p_small_category4']),
