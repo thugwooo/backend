@@ -8,6 +8,7 @@ class Product(models.Model):
     p_id = models.AutoField(primary_key=True)
     p_pet = models.CharField(max_length=20, default='강아지')
     p_name = models.CharField(max_length=100)
+    p_brand = models.CharField(max_length=100)
     p_large_category = models.CharField(max_length=100, blank=True)
     p_medium_category = models.CharField(max_length=100, blank=True)
     p_small_category1 = ArrayField(models.CharField(max_length=20), blank =True)
