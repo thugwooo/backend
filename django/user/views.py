@@ -37,7 +37,7 @@ def login(request):
             return Response(serializer.data)
 
 # 펫 model save
-@api_view(['POST'])
+@api_view(['POST','UPDATE','PUT',"PATCH"])
 def pet_register(request):
     if request.method == 'POST':
         p_info = Pet.inputPet(request)
@@ -46,9 +46,14 @@ def pet_register(request):
                 u_id = User.objects.get(u_id = request.POST['u_id']),
             )
         except:
-            p_info.save()
+            # p_info.save()
+            print('asdf')
             return Response('register')
         #여기를 어떻게 해야 잘했다고 소문이 날까
+    elif request.method =='PATCH':
+        print(request.data['asdf'])
+        return Response('ㅁㄴㅇㄹ')
+    return Response('실패')
 
 @api_view(['POST'])
 def pet(request):
@@ -62,3 +67,5 @@ def pet(request):
         else: 
             serializer = PetSerializer(pet_info, many = True)
             return Response(serializer)
+
+
