@@ -11,3 +11,14 @@ MIDDLEWARE += (
 )
 
 INTERNAL_IPS = ['127.0.0.1']
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'testdb',
+        'USER': 'louis',
+        'PASSWORD' : 'louis',
+        'HOST' : 'localhost',
+        'PORT' : '',
+    }
+}

@@ -8,7 +8,6 @@ class Product(models.Model):
     p_id = models.AutoField(primary_key=True)
     p_pet = models.CharField(max_length=20, default='강아지')
     p_name = models.CharField(max_length=100)
-    p_brand = models.CharField(max_length=100)
     p_large_category = models.CharField(max_length=100, blank=True)
     p_medium_category = models.CharField(max_length=100, blank=True)
     p_small_category1 = ArrayField(models.CharField(max_length=20), blank =True)
@@ -22,7 +21,6 @@ class Product(models.Model):
     p_ratail_price = models.IntegerField(blank=True)
     p_wholesale_price = models.IntegerField(blank=True, default=0)
     p_product_count = models.IntegerField(default=0)
-    p_event = ArrayField(models.IntegerField(),blank=True) #아 이렇게 처리하는게 맞는것인가
 
     def __str__ (self):
         return self.p_name

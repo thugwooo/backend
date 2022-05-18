@@ -7,7 +7,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'louishome.settings.local')
 django.setup()
 from product.models import Product
 
-CSV_PATH_PRODUCTS = 'petfood.csv'
+CSV_PATH_PRODUCTS = 'test.csv'
 
 def str_to_list(data):
     data = data.replace(' ', '').replace('[', '').replace(']', '').replace("'",'').split(',')
@@ -33,7 +33,7 @@ with open(CSV_PATH_PRODUCTS,'r') as in_file:
             p_small_category6 = str_to_list(row['p_small_category6']),
             p_small_category7 = str_to_list(row['p_small_category7']),
             p_small_category8 = str_to_list(row['p_small_category8']),
-            p_ratail_price = int(row['p_retail_price']),
-            p_wholesale_price = 0,
+            p_ratail_price = int(row['p_retail_price'].replace(',','')),
+            p_wholesale_price = int(row['p_wholesale_price'].replace(',','')),
         )
 
