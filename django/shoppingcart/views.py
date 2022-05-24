@@ -10,8 +10,7 @@ from .serializers import ShoppingcartSerializer
 @api_view(['POST','PATCH'])
 def shoppingcart(request):
 
-    if request.method == 'POST':
-        
+    if request.method == 'POST':      
         try :
             queryset = Shoppingcart.objects.get(
                 u_id = int(request.POST['u_id']),

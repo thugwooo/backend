@@ -1,24 +1,28 @@
 from django.db import models
 from user.models import User
 from product.models import Product
+
 # Create your models here.
 
 
-class UserOrder(models.Model):
-    uo_id = models.AutoField(primary_key=True)
+class UserAddress(models.Model):  
     u_id = models.ForeignKey(User, on_delete=models.CASCADE) #유저 pk값
-    uo_date = models.DateTimeField(auto_now_add= True)
-    uo_address1 = models.CharField(max_length=20) #우편번호
-    uo_address1 = models.CharField(max_length=50) #주소
-    uo_address1 = models.CharField(max_length=50) #상세주소
+    uo_address1 = models.CharField(max_length=20, blank = True) #우편번호
+    uo_address2 = models.CharField(max_length=50, blank = True) #주소
+    uo_address3 = models.CharField(max_length=50, blank = True) #상세주소
+
 
 
 class UserOrderDetail(models.Model):
     uod_id = models.AutoField(primary_key=True)
-    uo_id = models.ForeignKey(UserOrder, on_delete=models.CASCADE)
+    u_id = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     p_id = models.ForeignKey(Product, on_delete= models.CASCADE)
     uod_count = models.IntegerField(default=1)
     uod_status = models.CharField(max_length=10, default='주문') # 현재 상태
+    uod_date = models.DateTimeField(auto_now_add = True, blank=True)
+
+
+
 
 class UserRefund(models.Model):
     ur_id = models.AutoField(primary_key= True)

@@ -5,9 +5,9 @@ from .models import User, Pet
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        field = '__all__'
+        fields = '__all__'
 
 class PetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pet
-        field = '__all__'
+        fields = '__all__'
