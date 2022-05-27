@@ -1,4 +1,3 @@
-from ast import Delete
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
 # Create your models here.
@@ -22,6 +21,13 @@ class User(models.Model):
         user_info.u_name = request.POST['u_name']
 
         return user_info
+
+class UserAddress(models.Model):
+    ua_id = models.AutoField(primary_key = True)
+    u_id = models.ForeignKey(User, on_delete = models.CASCADE)
+    ua_address1 = models.CharField(max_length=20, blank = True) #우편번호
+    ua_address2 = models.CharField(max_length=50, blank = True) #주소
+    ua_address3 = models.CharField(max_length=50, blank = True) #상세주소
 
 class Pet(models.Model):
     pet_id = models.AutoField(primary_key=True)
