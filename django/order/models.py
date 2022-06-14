@@ -15,7 +15,7 @@ class UserOrder(models.Model):
 class UserOrderDetail(models.Model):
     uod_id = models.AutoField(primary_key=True)
     uo_id = models.ForeignKey(UserOrder, on_delete = models.CASCADE)
-    u_id = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    u_id = models.ForeignKey(User, on_delete=models.CASCADE, default=1) # 이건 없어도 될듯
     p_id = models.ForeignKey(Product, on_delete= models.CASCADE)
     uod_quantity = models.IntegerField(default=1)
     uod_date = models.DateTimeField(auto_now_add = True, blank=True)

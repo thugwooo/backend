@@ -20,7 +20,7 @@ class Product(models.Model):
     p_small_category8 = ArrayField(models.CharField(max_length=20), blank =True)
     p_ratail_price = models.IntegerField(blank=True)
     p_wholesale_price = models.IntegerField(blank=True, default=0)
-    p_product_count = models.IntegerField(default=0)
+    p_product_stock = models.IntegerField(default=0)
 
     def __str__ (self):
         return self.p_name
