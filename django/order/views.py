@@ -17,6 +17,7 @@ def order(request):
             userorderDetail_info.p_id = Product(p_id = int(request.POST['p_id']))
             userorderDetail_info.save()
             print('detail')
+        
         except :
             userorder_info = UserAddress()
             userorder_info.u_id = User(u_id = int(request.POST['u_id']))

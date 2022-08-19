@@ -14,6 +14,8 @@ def register(request):
         u_info = User.registerUser(request)
         try: 
             user_info = User.objects.get(u_strid = request.POST['u_strid'])
+            # User(u_strid = request.POST['u_strid']).save()
+        # except User.DoseNotexist
         except:
             print('done')
             u_info.save()
