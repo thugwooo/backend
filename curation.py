@@ -1,5 +1,6 @@
-import dogBreed
-from datetime import datetime, timedelta
+from csv_to_dict import dog_breed
+from datetime import datetime
+import re
 
 
 def filteringAlg(key, petfood):
@@ -29,21 +30,35 @@ def filteringHealth(key, petfood):
 
 
 def setSize(curationData):
-    breed = dogBreed.csv_to_dict()
+    breed = dog_breed()
     for row in breed:
         if row['breed'] == curationData['breed']:
             curationData['size'] = row['size']
 
 
 def setLifeStage(curationData):
+    if curationData['pet'] == '강아지':
+        birth = curationData['birthYear'] + '-' + \
+            curationData['birthMonth'] + '-' + curationData['birthDay']
+        birth = datetime.strptime(birth, '%Y-%m-%d')
+        month = (datetime.now() - birth).days//30+1
+        curationData['month'] = month
+        print(month)
+        if month < 12:
+            curationData['life_stage'] = '퍼피'
+        elif month < 85:
+            curationData['life_stage'] = '어덜트'
+        else:
+            curationData['life_stage'] = '시니어'
 
-    birth = curationData['birthYear'] + '-' + \
-        curationData['birthMonth'] + '-' + curationData['birthDay']
-    birth = datetime.strptime(birth, '%Y-%m-%d')
-    month = datetime.now() - birth
-    print(datetime.now())
-    print(month.days//30+1)
 
-
-curationData = {'birthYear': '2022', 'birthMonth': '8', 'birthDay': '12'}
+curationData = {'pet': '강아지', 'birthYear': '2022',
+                'birthMonth': '8', 'birthDay': '4'}
 setLifeStage(curationData)
+
+
+def make_url(name):
+    han = re.compile('[^ ㄱ-ㅣ가-힣+]')
+    st = han.sub('', name)
+    st = st.replace(' ', '-')
+    return st

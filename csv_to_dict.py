@@ -1,7 +1,7 @@
 import csv
 
 
-def csv_to_dict():
+def petfood():
     data = []
     with open('petfood.csv', newline='') as csvfile:
 
@@ -33,5 +33,18 @@ def csv_to_dict():
             dict_value['retail_price'] = row['판매가']
             dict_value['whole_price'] = row['도매가']
 
+            data.append(dict_value)
+    return data
+
+
+def dog_breed():
+    data = []
+
+    with open('dogBreed.csv') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            dict_value = {}
+            dict_value['breed'] = row['견종']
+            dict_value['size'] = row['사이즈']
             data.append(dict_value)
     return data
